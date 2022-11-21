@@ -41,8 +41,10 @@ void foo(void)
 #ifdef FP_XSTATE_MAGIC1
 	DEFINE_LONGS(HOST_FP_SIZE, 2696);
 #else
-	DEFINE(HOST_FP_SIZE, sizeof(struct _fpstate) / sizeof(unsigned long));
+	//DEFINE(HOST_FP_SIZE, sizeof(struct _fpstate) / sizeof(unsigned long));
+    DEFINE(HOST_FP_SIZE, 1024);
 #endif
+    /* FJCK
 	DEFINE_LONGS(HOST_BX, RBX);
 	DEFINE_LONGS(HOST_CX, RCX);
 	DEFINE_LONGS(HOST_DI, RDI);
@@ -62,6 +64,7 @@ void foo(void)
 	DEFINE_LONGS(HOST_CS, CS);
 	DEFINE_LONGS(HOST_SS, SS);
 	DEFINE_LONGS(HOST_EFLAGS, EFLAGS);
+    */
 #if 0
 	DEFINE_LONGS(HOST_FS, FS);
 	DEFINE_LONGS(HOST_GS, GS);
@@ -69,8 +72,8 @@ void foo(void)
 	DEFINE_LONGS(HOST_ES, ES);
 #endif
 
-	DEFINE_LONGS(HOST_IP, RIP);
-	DEFINE_LONGS(HOST_SP, RSP);
+	//DEFINE_LONGS(HOST_IP, RIP);
+	//DEFINE_LONGS(HOST_SP, RSP);
 #endif
 
 	DEFINE(UM_FRAME_SIZE, sizeof(struct user_regs_struct));

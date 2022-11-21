@@ -8,6 +8,7 @@
 #define MAX_REG_OFFSET (UM_FRAME_SIZE)
 #define MAX_REG_NR ((MAX_REG_OFFSET) / sizeof(unsigned long))
 
+/* FJCK
 #define REGS_IP(r) ((r)[HOST_IP])
 #define REGS_SP(r) ((r)[HOST_SP])
 #define REGS_EFLAGS(r) ((r)[HOST_EFLAGS])
@@ -37,6 +38,7 @@
 #define UPT_SS(r) REGS_SS((r)->gp)
 #define UPT_DS(r) REGS_DS((r)->gp)
 #define UPT_ES(r) REGS_ES((r)->gp)
+*/
 
 #ifdef __i386__
 #include "ptrace_32.h"

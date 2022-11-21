@@ -32,12 +32,13 @@ else
 
 START := 0x60000000
 
-KBUILD_CFLAGS += -fno-builtin -m64 
+# FJCK
+#KBUILD_CFLAGS += -fno-builtin -m64 
 
-CHECKFLAGS  += -m64 -D__x86_64__
-KBUILD_AFLAGS += -m64
+#CHECKFLAGS  += -m64 -D__x86_64__
+#KBUILD_AFLAGS += -m64
 KBUILD_LDFLAGS += -m elf_x86_64
-KBUILD_CPPFLAGS += -m64
+#KBUILD_CPPFLAGS += -m64
 
 ELF_ARCH := i386:x86-64
 ELF_FORMAT := elf64-x86-64
@@ -45,6 +46,6 @@ ELF_FORMAT := elf64-x86-64
 # Not on all 64-bit distros /lib is a symlink to /lib64. PLD is an example.
 
 LINK-$(CONFIG_LD_SCRIPT_DYN_RPATH) += -Wl,-rpath,/lib64
-LINK-y += -m64
+#LINK-y += -m64
 
 endif

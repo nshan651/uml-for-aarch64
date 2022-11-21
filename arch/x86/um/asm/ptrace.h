@@ -10,6 +10,7 @@
 
 #define user_mode(r) UPT_IS_USER(&(r)->regs)
 
+/* FJCK
 #define PT_REGS_AX(r) UPT_AX(&(r)->regs)
 #define PT_REGS_BX(r) UPT_BX(&(r)->regs)
 #define PT_REGS_CX(r) UPT_CX(&(r)->regs)
@@ -27,6 +28,7 @@
 
 #define PT_REGS_ORIG_SYSCALL(r) PT_REGS_AX(r)
 #define PT_REGS_SYSCALL_RET(r) PT_REGS_AX(r)
+*/
 
 #define PT_FIX_EXEC_STACK(sp) do ; while(0)
 
