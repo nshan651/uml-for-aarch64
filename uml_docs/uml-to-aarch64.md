@@ -1,5 +1,7 @@
 # UML to AARCH64
 
+MR. DIKE'S EMAIL: jdike@linux.intel.com
+
 ## Compiling
 
 * `CROSS_COMPILE=aarch64-linux-gnu- make ARCH=um`

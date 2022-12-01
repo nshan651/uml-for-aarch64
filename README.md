@@ -6,6 +6,6 @@ UML compatibility for ARM
 
 Here's the documentation for porting UML to ARM
 
-[UML Docs](uml_docs/index.md)
+[UML Docs](./uml_docs/index.md)
 
 
