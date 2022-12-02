@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: GPL-2.0
+core-y += arch/arm64/crypto/
+
+START := 0x60000000
+
+KBUILD_CFLAGS += -fno-builtin
+
+CHECKFLAGS  += -D__ARM64__
+KBUILD_AFLAGS +=
+KBUILD_LDFLAGS += -m aarch64elf
+KBUILD_CPPFLAGS += 
+
+ELF_ARCH := aarch64
+ELF_FORMAT := elf64-littleaarch64
+
+# Not on all 64-bit distros /lib is a symlink to /lib64. PLD is an example.
+LINK-$(CONFIG_LD_SCRIPT_DYN_RPATH) += -Wl,-rpath,/lib64
+LINK-y +=
+
+# The archprepare rule is called by the main kernel Makefile.
+# This is a script that generates some header files for arm64
+# port.
+archprepare:
+	$(Q)$(MAKE) $(build)=arch/arm64/tools kapi
