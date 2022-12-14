@@ -224,3 +224,33 @@ Be sure to modify the function `regs_return_value` to return general-purpose reg
 Or if cross compiling:
 
     `CROSS_COMPILE=aarch64-linux-gnu- make SUBARCH=arm64 ARCH=um`
+    
+---
+
+# Nick Changes
+
+* On cross compile
+
+```
+CROSS_COMPILE=aarch64-linux-gnu- make SUBARCH=arm64 ARCH=um
+arch/um/Makefile:118: warning: overriding recipe for target 'archprepare'
+arch/arm64/Makefile.um:24: warning: ignoring old recipe for target 'archprepare'
+make[1]: Nothing to be done for 'archheaders'.
+  UPD     include/config/kernel.release
+  UPD     include/generated/utsrelease.h
+  CC      kernel/bounds.s
+In file included from ./arch/arm64/include/asm/alternative.h:5,
+                 from ./arch/arm64/um/asm/barrier.h:6,
+                 from ./include/asm-generic/bitops/generic-non-atomic.h:7,
+                 from ./include/linux/bitops.h:34,
+                 from ./include/linux/log2.h:12,
+                 from kernel/bounds.c:13:
+./arch/arm64/include/asm/alternative-macros.h:5:10: fatal error: asm/cpucaps.h: No such file or directory
+    5 | #include <asm/cpucaps.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.build:117: kernel/bounds.s] Error 1
+make: *** [Makefile:1205: prepare0] Error 2
+```
+
+* Commented out asm/cpucaps.h in `alternative-macros.h`
