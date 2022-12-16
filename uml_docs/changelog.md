@@ -15,7 +15,7 @@ cp arch/x86/um/asm/* arch/arm64/um/asm
 
 ### Replace the contents of `arch/arm64/Makefile.um` with the following:
 
-```
+```sh
 core-y += arch/arm64/crypto/
 
 START := 0x60000000
@@ -231,6 +231,8 @@ Or if cross compiling:
 
 * On cross compile
 
+## A Missing File?
+
 ```
 CROSS_COMPILE=aarch64-linux-gnu- make SUBARCH=arm64 ARCH=um
 arch/um/Makefile:118: warning: overriding recipe for target 'archprepare'
@@ -253,4 +255,10 @@ make[1]: *** [scripts/Makefile.build:117: kernel/bounds.s] Error 1
 make: *** [Makefile:1205: prepare0] Error 2
 ```
 
-* Commented out asm/cpucaps.h in `alternative-macros.h`
+* Our version of the kernel is literally missing asm/cpucaps.h??? Not sure why it was missing
+* Added copy from [here](https://elixir.bootlin.com/linux/v4.19/source/arch/arm64/include/asm/cpucaps.h)
+
+## x86_capability Array
+
+* Stores info about the x86 processor on which the kernel is running
+> Rhere is an equivalent for the arm64 architecture. The Linux kernel uses the elf_hwcap and elf_hwcap2 arrays to store information about the capabilities of the arm64 processor. These arrays are populated during the boot process, using information provided by the processor itself. Like the x86_capability array, the elf_hwcap and elf_hwcap2 arrays are used by the kernel and other system software to make decisions about how to use the processor and its features.

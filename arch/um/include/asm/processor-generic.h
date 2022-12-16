@@ -87,10 +87,12 @@ struct cpuinfo_um {
 	unsigned long loops_per_jiffy;
 	int ipi_pipe[2];
 	int cache_alignment;
+    #ifdef __x86_64
 	union {
 		__u32		x86_capability[NCAPINTS + NBUGINTS];
 		unsigned long	x86_capability_alignment;
 	};
+    #endif
 };
 
 extern struct cpuinfo_um boot_cpu_data;
